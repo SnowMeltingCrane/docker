@@ -1,0 +1,34 @@
+version: '3.3'           #compose文件版本
+
+services:
+  mysql:                   # 服务1：mysql
+    image: mysql:5.7    # 使用镜像 mysql：5.7版本
+    volumes:
+      - /root/mysql:/var/lib/mysql   # 数据持久化
+    restart: always     # 容器服务宕机后总是重启
+    ports:
+      - "3307:3306"
+    networks:
+      - mywordpress     #网络名称为mywordpress
+    environment:        # 环境配置
+      MYSQL_ROOT_PASSWORD: 123456 #数据库root用户密码
+      MYSQL_DATABASE: wordpress #wordpress数据库名称
+      MYSQL_USER: xueruohang      #数据库用户名
+      MYSQL_PASSWORD: 123456 #数据库密码
+
+  wordpress:          # 服务2：wordpress
+    depends_on:       # wordpress服务启动时依赖mysql服务，所以会自动先启动mysql服务
+      - mysql
+    image: wordpress:latest    # 使用镜像 wordpress：latest最新版
+    ports:
+      - "8080:80"          #端口映射8000:80
+    restart: always
+    networks:
+      - mywordpress
+    environment:        # 环境
+      WORDPRESS_DB_HOST: mysql:3306     # wordpress连接db的3306端口
+      WORDPRESS_DB_USER: xueruohang    # xrh_wordpress的数据库用户为xueruohang
+      WORDPRESS_DB_PASSWORD: 123456   # xrh_wordpress的数据库密码是123456
+      WORDPRESS_DB_NAME: wordpress    # xrh_wordpress的数据库名字是xrh_wordpress,xrh_wordpress与HLQ_WORDPRESS_DB_NAME要对应
+networks:
+  mywordpress: #创建网路mywordpress
