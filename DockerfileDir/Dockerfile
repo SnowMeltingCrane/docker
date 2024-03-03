@@ -1,6 +1,3 @@
-FROM mysql:5.7
-ENV MYSQL_DATABASE=wordpress \
-    MYSQL_USER=xueruohang \
-    MYSQL_PASSWORD=123456 \
-    MYSQL_ROOT_PASSWORD=123456
-VOLUME /var/lib/mysql
+FROM ubuntu:latest
+ENV MY_VAR=my_value
+CMD echo $MY_VAR

@@ -27,7 +27,7 @@ services:
     environment:        # 环境
       WORDPRESS_DB_HOST: mysql:3306     # wordpress连接db的3306端口
       WORDPRESS_DB_USER: xueruohang    # xrh_wordpress的数据库用户为xueruohang
-      WORDPRESS_DB_PASSWORD: 123456   # xrh_wordpress的数据库密码是123456
+      WORDPRESS_DB_PASSWORD: 1234567   # xrh_wordpress的数据库密码是123456
       WORDPRESS_DB_NAME: wordpress    # xrh_wordpress的数据库名字是xrh_wordpress,xrh_wordpress与HLQ_WORDPRESS_DB_NAME要对应
 networks:
   mywordpress: #创建网路mywordpress
