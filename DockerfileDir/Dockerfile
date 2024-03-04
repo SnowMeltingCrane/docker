@@ -1,6 +1,0 @@
-FROM mysql:5.7
-ENV MYSQL_DATABASE=wordpress \
-    MYSQL_USER=xueruohang \
-    MYSQL_PASSWORD=123456 \
-    MYSQL_ROOT_PASSWORD=123456
-VOLUME /var/lib/mysql
