@@ -1,0 +1,18 @@
+FROM mysql:5.7
+ENV MYSQL_DATABASE=wordpress \
+    MYSQL_USER=xueruohang \
+    MYSQL_PASSWORD=1234567 \
+    MYSQL_ROOT_PASSWORD=1234567
+VOLUME /var/lib/mysql
+
+
+FROM wordpress:latest
+ENV WORDPRESS_DB_HOST=db:3306 \
+    WORDPRESS_DB_USER=xueruohang \
+    WORDPRESS_DB_PASSWORD=1234567 \
+    WORDPRESS_DB_NAME=wordpress
+VOLUME /var/www/html
+
+FROM ubuntu:latest
+ENV MY_VAR=my_value
+CMD echo $MY_VAR
